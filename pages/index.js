@@ -7,7 +7,7 @@ import useDeviceFetch from "./useDeviceFetch";
 import RefreshIcon from "@material-ui/icons/Refresh";
 
 export default function Home() {
-  const { loading, devices, toggleDevice, getDevices } = useDeviceFetch();
+  const { loading, devices, toggleDevice, getDevices, changeName } = useDeviceFetch();
   const [macSelected, setSelected] = useState("");
 
   return (
@@ -24,12 +24,13 @@ export default function Home() {
           <Insights devices={devices} />
         </section>
         <section className={`${s.noPadding} ${s.devicesContainer}`}>
-          {!loading && devices.map((device) => (
+          {devices.map((device) => (
             <DeviceCard
               device={device}
               isSelected={device.mac === macSelected}
               onToggleDevice={toggleDevice}
               onSelect={setSelected}
+              onChangeName={changeName}
             />
           ))}
         </section>

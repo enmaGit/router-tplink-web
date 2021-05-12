@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import s from "./DeviceCard.module.scss";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 import DeviceUnknownIcon from "@material-ui/icons/DeviceUnknown";
 import TextUtils from "../../utils/TextUtils";
+import { makeStyles } from "@material-ui/core/styles";
 
-const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
+const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice, onChangeName }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(device.name);
+  const inputEl = useRef();
 
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -16,6 +18,18 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
   useEffect(() => {
     setIsEditing(false);
   }, [isSelected]);
+
+  useEffect(() => {
+    if (isEditing) {
+      inputEl.current.focus();
+    }
+  }, [isEditing]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onChangeName({ ...device, name: name });
+    setIsEditing(false)
+  };
 
   return (
     <div
@@ -27,7 +41,7 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
       <div className={s.typeContainer}>
         <DeviceUnknownIcon />
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         {!isEditing && (
           <div className={s.infoSection}>
             <h2
@@ -43,9 +57,12 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
         {isEditing && (
           <TextField
             id="standard-basic"
-            label="Standard"
+            label="Nombre"
             value={name}
+            inputRef={inputEl}
             onChange={handleChangeName}
+            variant="outlined"
+            size="small"
           />
         )}
       </form>

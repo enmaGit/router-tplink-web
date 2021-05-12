@@ -123,6 +123,21 @@ class DevicesService {
       }
     );
   };
+
+  changeDeviceName = (newDeviceInfo, newName) => {
+    return fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/devices/${newDeviceInfo.mac}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({
+          name: newName,
+        }),
+      }
+    );
+  };
 }
 
 export default new DevicesService();

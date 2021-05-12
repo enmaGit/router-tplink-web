@@ -18,11 +18,17 @@ const useDeviceFetch = () => {
     getDevices();
   };
 
+  const changeName = async (device) => {
+    setLoading(true);
+    await DevicesService.changeDeviceName(device, device.name);
+    getDevices();
+  };
+
   useEffect(() => {
     getDevices();
   }, []);
 
-  return { loading, devices, toggleDevice, getDevices };
+  return { loading, devices, toggleDevice, getDevices, changeName };
 };
 
 export default useDeviceFetch;

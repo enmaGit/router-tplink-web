@@ -20,6 +20,23 @@
 
   form {
     flex-grow: 1;
+
+    div label {
+      color: #eee !important;
+    }
+
+    div {
+      width: 95%;
+
+      fieldset {
+        border-color: #eee !important;
+      }
+
+      input {
+        font-size: 1em;
+        color: #eee !important;
+      }
+    }
   }
 
   .typeContainer {
