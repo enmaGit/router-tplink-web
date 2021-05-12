@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 20px;
 
   h2 {
     margin: 0;
@@ -13,8 +13,9 @@
     text-transform: capitalize;
   }
 
-  span {
-    font-size: 0.7em;
+  .littleText {
+    font-size: 0.6em;
+    color: #5c5d5f;
   }
 
   form {
@@ -39,5 +40,10 @@
   &.selected {
     background: linear-gradient(90deg, #3a4dd3 0%, #1e2c9b 100%);
     color: #eee;
+    box-shadow: 2px 7px 34px -15px #000;
+
+    .littleText {
+      color: #eee;
+    }
   }
 }

@@ -1,3 +1,27 @@
 .root {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  div {
+    width: 20%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    display: block;
+    margin-right: 5px;
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  span {
+    display: block;
+    padding: 3px 10px;
+    color: #eee;
+    background-color: #3a4dd3;
+    border-radius: 10px;
+  }
 }

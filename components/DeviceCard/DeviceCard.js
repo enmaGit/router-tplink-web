@@ -37,7 +37,7 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
             >
               {TextUtils.capitalize(device.name)}
             </h2>
-            <span>{device.ip}</span>
+            <span className={s.littleText}>{device.ip}</span>
           </div>
         )}
         {isEditing && (
@@ -61,7 +61,7 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice }) => {
           name="checkedB"
           inputProps={{ "aria-label": "primary checkbox" }}
         />
-        <span>32 Kbps</span>
+        <span className={s.littleText}>32 Kbps</span>
       </div>
     </div>
   );
