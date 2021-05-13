@@ -6,7 +6,7 @@ class TextUtils {
   getReadableFileSizeString(fileSizeInBytes) {
     let i = -1;
     const byteUnits = [
-      " kbps",
+      " Kbps",
       " Mbps",
       " Gbps",
       " Tbps",
