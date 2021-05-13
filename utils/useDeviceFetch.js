@@ -1,14 +1,23 @@
 const { useState, useEffect } = require("react");
 const { default: DevicesService } = require("../services/DevicesService");
 
-const useDeviceFetch = () => {
+export function useDeviceFetch() {
   const [loading, setLoading] = useState(false);
   const [devices, setDevices] = useState([]);
 
   const getDevices = async () => {
     setLoading(true);
     const devices = await DevicesService.getDevices();
-    setDevices(devices);
+    setDevices(
+      devices.sort((a, b) => {
+        if (a.speed > b.speed) {
+          return -1;
+        } else if (a.speed < b.speed) {
+          return 1;
+        }
+        return 0;
+      })
+    );
     setLoading(false);
   };
 
@@ -29,6 +38,4 @@ const useDeviceFetch = () => {
   }, []);
 
   return { loading, devices, toggleDevice, getDevices, changeName };
-};
-
-export default useDeviceFetch;
+}

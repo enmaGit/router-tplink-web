@@ -1,7 +1,13 @@
-.container {
-}
-
 .main {
+  .fixedUp {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background: white;
+    z-index: 999;
+    box-shadow: 2px 7px 34px -15px #000;
+  }
+
   section {
     padding: 0 20px;
 
@@ -16,21 +22,34 @@
       align-items: center;
 
       .loading {
-        animation:spin 4s linear infinite;
+        animation: spin 4s linear infinite;
       }
     }
   }
 
   .devicesContainer {
-
+    margin-top: 210px;
   }
 
   .insights {
-    padding-top: 30px;
-    padding-bottom:30px
+    padding-top: 10px;
+    padding-bottom: 30px;
   }
 }
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

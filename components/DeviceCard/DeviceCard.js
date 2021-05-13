@@ -6,7 +6,13 @@ import DeviceUnknownIcon from "@material-ui/icons/DeviceUnknown";
 import TextUtils from "../../utils/TextUtils";
 import { makeStyles } from "@material-ui/core/styles";
 
-const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice, onChangeName }) => {
+const DeviceCard = ({
+  device,
+  onSelect,
+  isSelected,
+  onToggleDevice,
+  onChangeName,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(device.name);
   const inputEl = useRef();
@@ -28,7 +34,7 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice, onChangeName
   const handleSubmit = (e) => {
     e.preventDefault();
     onChangeName({ ...device, name: name });
-    setIsEditing(false)
+    setIsEditing(false);
   };
 
   return (
@@ -45,9 +51,13 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice, onChangeName
         {!isEditing && (
           <div className={s.infoSection}>
             <h2
-              onClick={() => {
-                setIsEditing(true);
-              }}
+              onClick={
+                isSelected
+                  ? () => {
+                      setIsEditing(true);
+                    }
+                  : undefined
+              }
             >
               {TextUtils.capitalize(device.name)}
             </h2>
@@ -78,7 +88,9 @@ const DeviceCard = ({ device, onSelect, isSelected, onToggleDevice, onChangeName
           name="checkedB"
           inputProps={{ "aria-label": "primary checkbox" }}
         />
-        <span className={s.littleText}>32 Kbps</span>
+        <span className={s.littleText}>
+          {TextUtils.getReadableFileSizeString(device.speed)}
+        </span>
       </div>
     </div>
   );
