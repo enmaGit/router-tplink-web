@@ -10,10 +10,6 @@ export function Insights({ devices }) {
   }, 0);
   return (
     <div className={s.root}>
-      <span className={s.total}>
-        <ArrowDownwardIcon />
-        {TextUtils.getReadableFileSizeString(totalSpeed)}
-      </span>
       <div className={s.insights}>
         <div>
           <label>Activos</label>
@@ -27,6 +23,12 @@ export function Insights({ devices }) {
           <label>Wifi</label>
           <span>{0}</span>
         </div>
+      </div>
+      <div className={s.total}>
+        <span>
+          <ArrowDownwardIcon />
+          {TextUtils.getReadableFileSizeString(totalSpeed)}
+        </span>
       </div>
     </div>
   );

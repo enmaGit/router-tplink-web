@@ -10,12 +10,6 @@ export default function Home() {
     useDeviceFetch();
   const [macSelected, setSelected] = useState("");
 
-  useEffect(() => {
-    if (macSelected === "" && devices.length > 0) {
-      setSelected(devices[0].mac);
-    }
-  }, [devices]);
-
   return (
     <div className={s.container}>
       <main className={s.main}>

@@ -84,7 +84,7 @@ const DeviceCard = ({
               onToggleDevice(device);
             }
           }}
-          color="primary"
+          color="accent"
           name="checkedB"
           inputProps={{ "aria-label": "primary checkbox" }}
         />
