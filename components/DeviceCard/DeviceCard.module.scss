@@ -11,6 +11,7 @@
     margin-bottom: 5px;
     font-size: 1em;
     text-transform: capitalize;
+    color: #0a0c1d;
   }
 
   .littleText {
@@ -22,19 +23,19 @@
     flex-grow: 1;
 
     div label {
-      color: #eee !important;
+      color: #0a0c1d !important;
     }
 
     div {
       width: 95%;
 
       fieldset {
-        border-color: #eee !important;
+        border-color: #0a0c1d !important;
       }
 
       input {
         font-size: 1em;
-        color: #eee !important;
+        color: #0a0c1d !important;
       }
     }
   }
@@ -42,6 +43,7 @@
   .typeContainer {
     width: 15%;
     text-align: left;
+    color: #0a0c1d;
   }
 
   .infoSection {
@@ -55,12 +57,11 @@
   }
 
   &.selected {
-    background: linear-gradient(90deg, #a3a4ac 0%, #868fab 100%);
-    color: #eee;
-    box-shadow: 2px 7px 34px -15px #000;
+    background: #a3a4ac33;
+    box-shadow: 2px 7px 34px -15px #aaa;
 
     .littleText {
-      color: #eee;
+      color: #d84931;
     }
   }
 }

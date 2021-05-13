@@ -4,6 +4,7 @@ import { Insights } from "../components/Insights/Insights";
 import s from "../styles/Home.module.scss";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDeviceFetch } from "../utils/useDeviceFetch";
+import SeoComponent from "../components/SeoComponent/Seocomponent";
 
 export default function Home() {
   const { loading, devices, toggleDevice, getDevices, changeName } =
@@ -12,6 +13,7 @@ export default function Home() {
 
   return (
     <div className={s.container}>
+      <SeoComponent />
       <main className={s.main}>
         <div className={s.fixedUp}>
           <section className={s.header}>
