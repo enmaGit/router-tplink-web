@@ -38,8 +38,8 @@ const DeviceCard = ({
     setIsEditing(false);
   };
 
-  const handleChangeType = (event) => {
-    onChangeType({ ...device, type: event.target.value });
+  const handleChangeType = (type) => {
+    onChangeType({ ...device, type: type });
     setIsEditing(false);
   };
 

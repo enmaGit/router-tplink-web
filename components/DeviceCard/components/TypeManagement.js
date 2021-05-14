@@ -9,7 +9,10 @@ import s from "./TypeManagement.module.scss";
 
 const TypeManagement = ({ isSelected, device, handleChangeType }) => {
   const [isSelectTypeOpen, setIsSelectTypeOpen] = useState(false);
-  const Icon = DeviceTypes.find(type => type.code === (device.type || 'unknown')).icon
+  const [typeSelected, setTypeSelected] = useState(device.type || "unknown");
+  const Icon = DeviceTypes.find(
+    (type) => type.code === (device.type || "unknown")
+  ).icon;
   return (
     <>
       <div
@@ -31,6 +34,7 @@ const TypeManagement = ({ isSelected, device, handleChangeType }) => {
         title="Selecciona un tipo"
         isOpen={isSelectTypeOpen}
         onOk={() => {
+          handleChangeType(typeSelected);
           setIsSelectTypeOpen(false);
         }}
         onCancel={() => {
@@ -42,8 +46,10 @@ const TypeManagement = ({ isSelected, device, handleChangeType }) => {
             <InputLabel htmlFor="demo-dialog-native">Tipo</InputLabel>
             <Select
               native
-              value={device.type}
-              onChange={handleChangeType}
+              value={typeSelected}
+              onChange={(e) => {
+                setTypeSelected(e.target.value);
+              }}
               input={<Input id="demo-dialog-native" />}
             >
               {DeviceTypes.map((type) => (
