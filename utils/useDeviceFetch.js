@@ -33,9 +33,15 @@ export function useDeviceFetch() {
     getDevices();
   };
 
+  const changeType = async (device) => {
+    setLoading(true);
+    await DevicesService.changeDeviceType(device, device.type);
+    getDevices();
+  };
+
   useEffect(() => {
     getDevices();
   }, []);
 
-  return { loading, devices, toggleDevice, getDevices, changeName };
+  return { loading, devices, toggleDevice, getDevices, changeName, changeType };
 }

@@ -7,7 +7,7 @@ import { useDeviceFetch } from "../utils/useDeviceFetch";
 import SeoComponent from "../components/SeoComponent/Seocomponent";
 
 export default function Home() {
-  const { loading, devices, toggleDevice, getDevices, changeName } =
+  const { loading, devices, toggleDevice, getDevices, changeName, changeType } =
     useDeviceFetch();
   const [macSelected, setSelected] = useState("");
 
@@ -35,6 +35,7 @@ export default function Home() {
               onToggleDevice={toggleDevice}
               onSelect={setSelected}
               onChangeName={changeName}
+              onChangeType={changeType}
             />
           ))}
         </section>

@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import s from "./DeviceCard.module.scss";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
-import DeviceUnknownIcon from "@material-ui/icons/DeviceUnknown";
 import TextUtils from "../../utils/TextUtils";
-import { makeStyles } from "@material-ui/core/styles";
+
+import TypeManagement from "./components/TypeManagement";
 
 const DeviceCard = ({
   device,
@@ -12,6 +12,7 @@ const DeviceCard = ({
   isSelected,
   onToggleDevice,
   onChangeName,
+  onChangeType,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(device.name);
@@ -37,6 +38,11 @@ const DeviceCard = ({
     setIsEditing(false);
   };
 
+  const handleChangeType = (event) => {
+    onChangeType({ ...device, type: event.target.value });
+    setIsEditing(false);
+  };
+
   return (
     <div
       className={`${s.root} ${isSelected ? s.selected : ""}`}
@@ -44,9 +50,11 @@ const DeviceCard = ({
         onSelect(device.mac);
       }}
     >
-      <div className={s.typeContainer}>
-        <DeviceUnknownIcon />
-      </div>
+      <TypeManagement
+        device={device}
+        handleChangeType={handleChangeType}
+        isSelected={isSelected}
+      />
       <form onSubmit={handleSubmit}>
         {!isEditing && (
           <div className={s.infoSection}>
